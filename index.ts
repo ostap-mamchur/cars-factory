@@ -1,5 +1,5 @@
-import { CarBuilder, ICarBuilder } from "./builders/CarBuilder"
-import { CarPartsFactory, ICarPartsFactory } from "./factories/CarPartsFactory"
+import { CarBuilder, ICarBuilder } from "./builder/CarBuilder"
+import { CarPartsFactory, ICarPartsFactory } from "./factory/CarPartsFactory"
 
 const factory: ICarPartsFactory = new CarPartsFactory()
 const engine = factory.createEngine()

@@ -8,6 +8,7 @@ export interface ICarBuilder {
   setBody(body: IBody): void
   setAccessor(accessor: IAccessor): void
   getCar(): ICar
+  reset(): void
 }
 
 export class CarBuilder implements ICarBuilder {
@@ -31,5 +32,9 @@ export class CarBuilder implements ICarBuilder {
 
   getCar(): ICar {
     return this.car
+  }
+
+  reset(): void {
+    this.car = new Car()
   }
 }
