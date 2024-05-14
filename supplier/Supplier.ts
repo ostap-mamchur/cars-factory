@@ -17,7 +17,6 @@ export class Supplier implements ISupplier {
   ) { }
 
   start(): void {
-    // N 
-    throw new Error("Method not implemented.");
+    console.log('<---- SUPPLIER START ----->')
   }
 }

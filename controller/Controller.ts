@@ -5,7 +5,11 @@ export interface IMediator {
   notify(event: string): void;
 }
 
-export class ConcreteMediator implements IMediator {
+export interface IController {
+  start(): void
+}
+
+export class Controller implements IMediator, IController {
   private carStorage: CarStorage;
   private director: Director;
 
@@ -16,14 +20,18 @@ export class ConcreteMediator implements IMediator {
     this.director = director;
     this.director.setMediator(this);
   }
+  start(): void {
+    this.analyse();
+  }
+  
 
-  public notify(event: string): void {
+  notify(event: string): void {
     if (event === 'carTaken') {
-      console.log('carTaken');
-
+      this.analyse();
     }
-    else if (event === 'd') {
+  }
 
-    }
+  private analyse() {
+    console.log('<---- CONTROLLER START ----->')
   }
 }

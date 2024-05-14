@@ -1,15 +1,36 @@
-import { CarBuilder, ICarBuilder } from "./builder/CarBuilder"
-import { CarPartsFactory, ICarPartsFactory } from "./factory/CarPartsFactory"
+import { CarBuilder } from "./builder/CarBuilder";
+import { Director } from "./builder/Director";
+import { Controller } from "./controller/Controller";
+import { Dealer } from "./dealer/Dealer";
+import { CarPartsFactory } from "./factory/CarPartsFactory";
+import { AccessorStorage } from "./storages/AccessorStorage";
+import { BodyStorage } from "./storages/BodyStorage";
+import { CarStorage } from "./storages/CarStorage";
+import { EngineStorage } from "./storages/EngineStorage";
+import { Supplier } from "./supplier/Supplier";
 
-const factory: ICarPartsFactory = new CarPartsFactory()
-const engine = factory.createEngine()
-const body = factory.createBody()
-const accessor = factory.createAccessor()
+/**
+ * SUPPLIER APP
+ */
+const carPartsFactory = new CarPartsFactory();
+const engineStorage = new EngineStorage();
+const bodyStorage = new BodyStorage();
+const accessorStorage = new AccessorStorage();
 
-const builder: ICarBuilder = new CarBuilder()
+const supplier = new Supplier(carPartsFactory, engineStorage, bodyStorage, accessorStorage);
+supplier.start();
 
-builder.setEngine(engine)
-builder.setBody(body)
-builder.setAccessor(accessor)
+/**
+ * BUILDER APP
+ */
+const carStorage = new CarStorage();
+const carBuilder = new CarBuilder();
+const director = new Director(carBuilder, engineStorage, bodyStorage, accessorStorage);
+const controller = new Controller(carStorage, director);
+controller.start();
 
-console.log(builder.getCar())
+/**
+ * DEALER APP
+ */
+const dealer = new Dealer(carStorage);
+dealer.start();
