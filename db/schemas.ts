@@ -20,6 +20,11 @@ export const cars = pgTable("cars", {
   accessorId: integer('accessor_id').references(() => accessors.id),
 });
 
+export type EngineSchema = typeof engines;
+export type BodySchema = typeof bodies;
+export type AccessorSchema = typeof accessors;
+export type CarSchema = typeof cars;
+
 export type EngineEntity = typeof engines.$inferSelect;
 export type BodyEntity = typeof bodies.$inferSelect;
 export type AccessorEntity = typeof accessors.$inferSelect;
