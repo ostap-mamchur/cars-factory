@@ -17,7 +17,7 @@ const engineStorage = new EngineStorage();
 const bodyStorage = new BodyStorage();
 const accessorStorage = new AccessorStorage();
 
-const supplier = new Supplier(carPartsFactory, engineStorage, bodyStorage, accessorStorage);
+const supplier = new Supplier(carPartsFactory, 10, engineStorage, bodyStorage, accessorStorage);
 supplier.start();
 
 /**

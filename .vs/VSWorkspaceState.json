@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\builder",
+    "\\controller",
+    "\\dealer",
+    "\\entities",
+    "\\factory",
+    "\\storages",
+    "\\supplier"
+  ],
+  "SelectedNode": "\\supplier\\Supplier.ts",
+  "PreviewInSolutionExplorer": false
+}
